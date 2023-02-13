@@ -5,7 +5,7 @@ helps, and credit will always be given.
 
 ## New contributor guide
 
-To get an overview of the project, read the [README](README). To contribute with our project, here are some resources to help you get started with open source contributions:
+To get an overview of the project, read the [README](https://github.com/UBC-MDS/IMDB_Viz_R/blob/main/README.md). To contribute with our project, here are some resources to help you get started with open source contributions:
 
 - [Finding ways to contribute to open source on GitHub](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github)
 - [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
