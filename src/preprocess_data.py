@@ -89,7 +89,7 @@ imdb = imdb.drop("genres", axis=1).join(
 )
 
 # select movies from 2011 to 2020 in the genres of interest
-imdb = imdb.query("2010 < startYear < 2021")
+imdb = imdb.query("2010 < startYear < 2023")
 imdb = imdb.query(
     'genres in ["Action", "Crime", "Horror", "Mystery", "Romance", "Sci-Fi", "Thriller"]'
 )
