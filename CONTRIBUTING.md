@@ -47,7 +47,7 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `socceranalysis` for local development.
+Ready to contribute? Here's how to set up `IMDB_Viz_R` for local development.
 
 1. Download a copy of `IMDB_Viz_R` locally.
 
