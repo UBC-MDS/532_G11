@@ -27,5 +27,12 @@ One day, Jack discovers the raw IMDB dataset, which contains a vast collection o
 
 By using our dashboard, Jack can filters the data based on the highest-rated movies and selects a few movies that he hasn't seen before with interactive and intuitive interface experiences. He can also use our visualization to explore the most popular movies of the year and checks out the cast and crew members of these movies to see if they have worked on any of his favorite films. Based on movie run time sorting, he can choose the proper movie and allocate enough time in his schedule to solely enjoy his movie time at home without any interpretation. 
 
+## App Sketch
+
+<img src="../images/Landing_Page.JPG"/>
+
+<img src="../images/Recommendations.JPG"/>
+
+<img src="../images/Metrics_Plots.JPG"/>
 
 
