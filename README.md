@@ -16,11 +16,11 @@ This dashboard is aimed at providing users with an easy-to-use and efficient way
 
 ## App Sketch
 
-<img src="images/Landing_Page.jpg"/>
+<img src="images/Landing_Page.JPG"/>
 
-<img src="images/Recommendations.jpg"/>
+<img src="images/Recommendations.JPG"/>
 
-<img src="images/Metrics_Plots.jpg"/>
+<img src="images/Metrics_Plots.JPG"/>
 
 ## License
 
