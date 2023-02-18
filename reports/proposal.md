@@ -6,7 +6,7 @@ Our role: Data consultancy firm
 
 Target audience: The Discerning Movie Enthusiast Seeking an Immersive Cinematic Experience of Their Liking.
 
-Our target audience consists of individuals who are passionate about film and are always on the lookout for new and exciting cinematic experiences. The dashboard aims to provide a valuable resource for movie enthusiasts who are looking to discover and explore new movies to watch but are overloaded with information on the internet. With countless options to choose from and varying levels of quality, we understand that the process of finding a great movie could often be overwhelming and time-consuming. Through our dashboard, our users can get an interactive and intuitive interface that allows them to explore a vast database of movies and discover exciting titles based on various metrics, including the movie's runtime, genre, rating, and gross earnings. We highlight the unique features and characteristics of each movie through engaging and immersive visuals in a web portal that is designed to be user-friendly and accessible. Whether you’re randomly looking for the next movie to watch or a seasoned movie critique, our dashboard provides you with all the necessary information for discovering the metrics that matter the most through effective visualizations.
+Our target audience consists of individuals who are passionate about film and are always on the lookout for new and exciting cinematic experiences. The dashboard aims to provide a valuable resource for movie enthusiasts who are looking to discover and explore new movies to watch but are overloaded with information on the internet. With countless options to choose from and varying levels of quality, we understand that the process of finding a great movie could often be overwhelming and time-consuming. Through our dashboard, our users can get an interactive and intuitive interface that allows them to explore a vast database of movies and discover exciting titles based on various metrics, including the movie's runtime, genre, rating, and gross earnings. We highlight the unique features and characteristics of each movie through engaging and immersive visuals in a web portal that is designed to be user-friendly and accessible. Whether you are randomly looking for the next movie to watch or a seasoned movie critique, our dashboard provides you with all the necessary information for discovering the metrics that matter the most through effective visualizations.
 
 ## Description of the data
 
@@ -21,7 +21,7 @@ We would like to explore the following research questions:
 
 Now imagine the following usage scenarios:
 
-Jack is a movie lover who loves watching and reviewing movies in his spare time. He's always on the lookout for new movies to add to his watchlist and is always interested in discovering cool movies he never watched before. 
+Jack is a movie lover who loves watching and reviewing movies in his spare time. He's always on the lookout for new movies to add to his watch list and is always interested in discovering cool movies he never watched before. 
 
 One day, Jack discovers the raw IMDB dataset, which contains a vast collection of movie information, including ratings, reviews, and other relevant data. But he has no technical skills and it is hard for him to process the raw data. Luckily, he has found out our dashboard for IMDB. 
 
