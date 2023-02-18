@@ -12,6 +12,14 @@ Our dashboard also contains a second page that will recommend 6 movies for the u
 
 Finally, our app contains a third page to provide users with some metrics and plots to visualize their movie preferences based on the same filters applied on the movie recommendation page.  There are 4 high level summary metrics showing the number of movies, the average IMDB rating, the average runtime, and the average number of votes for all movies based on the applied filters.  There are also 3 reactive plots that show the distribution of IMDB ratings by selected genres (boxplots), the distribution of runtimes by selected genre (boxplots), and the number of movies by genre (bar chart).  The boxplots and bars are coloured by genres.
 
+## App Sketch
+
+<img src="images/Landing_Page.jpg"/>
+
+<img src="images/Recommendations.jpg"/>
+
+<img src="images/Metrics_Plots.jpg"/>
+
 ## License
 
 `IMDB_Viz_R` was created by Yukun Zhang, Gaoxiang Wang, Guron Mike and Radhakrishnan Arjun. It is licensed under the terms of the MIT license.
