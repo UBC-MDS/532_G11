@@ -13,3 +13,10 @@ Our target audience consists of individuals who are passionate about film and ar
 For the dashboard, we're sourcing the data from Kaggle, which is a well-known platform for data science and machine learning projects. It can be accessed [here](https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows). The dataset contains 1000 observations of movie data with a compressive set of features. Some of the key features are the movie's title (Series_Title), the certificate issued (Certificate), release year (Released_Year), runtime (Runtime), genre (Genre), IMDB rating (IMDB_Rating), meta score (Meta_score), director (Director), star power (Star1, Star2, Star3, Star4), number of votes (No_of_votes), and box office earnings (Gross). The dataset also contains a summary of the movie (Overview) which allows the users to quickly understand if the story is something they would prefer or not.
 
 ## Research questions and usage scenarios
+
+We would like to explore the following research questions:
+* Which year has the largest number high-rated movies? 
+* Which combination of actors are getting good IMDB_Rating maximum time?
+* What are the top recommended six movies for users based on their preferences? 
+
+
