@@ -19,4 +19,13 @@ We would like to explore the following research questions:
 * Which combination of actors are getting good IMDB_Rating maximum time?
 * What are the top recommended six movies for users based on their preferences? 
 
+Now imagine the following usage scenarios:
+
+Jack is a movie lover who loves watching and reviewing movies in his spare time. He's always on the lookout for new movies to add to his watchlist and is always interested in discovering cool movies he never watched before. 
+
+One day, Jack discovers the raw IMDB dataset, which contains a vast collection of movie information, including ratings, reviews, and other relevant data. But he has no technical skills and it is hard for him to process the raw data. Luckily, he has found out our dashboard for IMDB. 
+
+By using our dashboard, Jack can filters the data based on the highest-rated movies and selects a few movies that he hasn't seen before with interactive and intuitive interface experiences. He can also use our visualization to explore the most popular movies of the year and checks out the cast and crew members of these movies to see if they have worked on any of his favorite films. Based on movie run time sorting, he can choose the proper movie and allocate enough time in his schedule to solely enjoy his movie time at home without any interpretation. 
+
+
 
