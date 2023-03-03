@@ -7,11 +7,8 @@ movies <- read.csv("data/imdb_top_1000.csv", stringsAsFactors = FALSE) %>%
   mutate(Runtime = as.numeric(gsub("([0-9]+).*$", "\\1", Runtime))) %>%
   mutate(Gross = as.numeric(gsub(",", "", Gross)) / 1000000)
 
-runtime_movies <- separate_rows(movies, Genre, sep = ",")
-runtime_movies$Genre <- trimws(runtime_movies$Genre)
-
-ratings_movies <- separate_rows(movies, Genre, sep = ",")
-ratings_movies$Genre <- trimws(ratings_movies$Genre)
+plot_movies <- separate_rows(movies, Genre, sep = ",")
+plot_movies$Genre <- trimws(plot_movies$Genre)
 
 # Define side panel
 sidepanels <- sidebarPanel(
@@ -94,8 +91,7 @@ wrangled_data<-function(df,input){reactive({
 server <- function(input, output) {
   # use reactive to avoid duplication
   filtered_data <- wrangled_data(movies,input)
-  runtime_data <- wrangled_data(runtime_movies, input)
-  ratings_data <- wrangled_data(ratings_movies, input)
+  plot_data <- wrangled_data(plot_movies, input)
 
   # output for movie recommendations
 
@@ -125,9 +121,9 @@ server <- function(input, output) {
   # output for movie ratings distribution plot
 
   output$boxplot_rg <- renderPlot({
-    req(ratings_data())
+    req(plot_data())
     ggplot(
-      ratings_data(),
+      plot_data(),
       aes(x = IMDB_Rating, y = Genre, fill = Genre)
     ) +
       geom_boxplot() +
@@ -145,9 +141,9 @@ server <- function(input, output) {
   # output for movie runtime distribution plot
   
   output$boxplot <- renderPlot({
-    req(runtime_data())
+    req(plot_data())
     ggplot(
-      runtime_data(),
+      plot_data(),
       aes(x = Runtime, y = Genre, fill = Genre)
     ) +
       geom_boxplot() +
