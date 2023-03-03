@@ -10,6 +10,9 @@ movies <- read.csv("data/imdb_top_1000.csv", stringsAsFactors = FALSE) %>%
 runtime_movies <- separate_rows(movies, Genre, sep = ",")
 runtime_movies$Genre <- trimws(runtime_movies$Genre)
 
+ratings_movies <- separate_rows(movies, Genre, sep = ",")
+ratings_movies$Genre <- trimws(ratings_movies$Genre)
+
 # Define side panel
 sidepanels <- sidebarPanel(
   pickerInput("genre", "Genre(s):",
@@ -55,7 +58,10 @@ ui <- navbarPage(
                    htmlOutput("picture")
                    ),
           
-          tabPanel("Ratings by Genre"),
+          tabPanel(
+            "Ratings by Genre",
+            plotOutput("boxplot_rg", height = "600px", width = "900px")
+          ),
           
           tabPanel(
             "Runtimes by Genre",
@@ -89,6 +95,7 @@ server <- function(input, output) {
   # use reactive to avoid duplication
   filtered_data <- wrangled_data(movies,input)
   runtime_data <- wrangled_data(runtime_movies, input)
+  ratings_data <- wrangled_data(ratings_movies, input)
 
   # output for movie recommendations
 
@@ -117,6 +124,26 @@ server <- function(input, output) {
 
 
 
+  output$boxplot_rg <- renderPlot({
+    req(ratings_data())
+    ggplot(
+      ratings_data(),
+      aes(x = IMDB_Rating, y = Genre, fill = Genre)
+    ) +
+      geom_boxplot() +
+      theme(
+        legend.position = "none",
+        plot.title = element_text(size = 20, face = "bold"),
+        axis.title = element_text(size = 15, face = "bold"),
+        axis.text = element_text(size = 12, face = "bold")
+      ) +
+      labs(x = "IMDB Rating", y = "Selected Genres") +
+      ggtitle("Distribution of IMDB Ratings by Genre") +
+      scale_x_continuous(breaks = seq(7.0, 10.0, by = 0.2))
+  })
+  
+  
+  
   output$boxplot <- renderPlot({
     req(runtime_data())
     ggplot(
