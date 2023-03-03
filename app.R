@@ -65,7 +65,9 @@ ui <- navbarPage(
             plotOutput("boxplot", height = "600px", width = "900px")
           ),
           
-          tabPanel("Movies by Genre")
+          tabPanel(
+            "Movies by Genre",
+            plotOutput("barplot", height = "600px", width = "900px"))
         )
       )
     )
@@ -157,6 +159,11 @@ server <- function(input, output) {
       ggtitle("Distribution of Runtimes by Genre") +
       scale_x_continuous(breaks = seq(40, 321, by = 10))
   })
+  
+  # output for movie number count barplot
+  
+  
+  
 }
 
 # Run the app
