@@ -53,9 +53,9 @@ This dashboard is aimed at providing users with an easy-to-use and efficient way
 
 <img src="images/Recommendations.JPG"/>
 
-<img src="images/Ratings_Plots.JPG"/>
+<img src="images/Ratings_Plot.JPG"/>
 
-<img src="images/Runtime_Plots.JPG"/>
+<img src="images/Runtime_Plot.JPG"/>
 
 ## License
 
