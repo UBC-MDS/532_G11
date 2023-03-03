@@ -7,8 +7,8 @@ movies <- read.csv("data/imdb_top_1000.csv", stringsAsFactors = FALSE) %>%
   mutate(Runtime = as.numeric(gsub("([0-9]+).*$", "\\1", Runtime))) %>%
   mutate(Gross = as.numeric(gsub(",", "", Gross)) / 1000000)
 
-runtime_movies <- separate_rows(movies, Genre, sep = ",")
-runtime_movies$Genre <- trimws(runtime_movies$Genre)
+plot_movies <- separate_rows(movies, Genre, sep = ",")
+plot_movies$Genre <- trimws(plot_movies$Genre)
 
 # Define side panel
 sidepanels <- sidebarPanel(
@@ -46,7 +46,7 @@ ui <- navbarPage(
   
   # First tab with shared side panel 
   tabPanel(
-    "IMDB Moive", 
+    "IMDB Movie", 
     sidebarLayout(
       sidepanels,
       mainPanel(
@@ -55,7 +55,10 @@ ui <- navbarPage(
                    htmlOutput("picture")
                    ),
           
-          tabPanel("Ratings by Genre"),
+          tabPanel(
+            "Ratings by Genre",
+            plotOutput("boxplot_rg", height = "600px", width = "900px")
+          ),
           
           tabPanel(
             "Runtimes by Genre",
@@ -88,7 +91,7 @@ wrangled_data<-function(df,input){reactive({
 server <- function(input, output) {
   # use reactive to avoid duplication
   filtered_data <- wrangled_data(movies,input)
-  runtime_data <- wrangled_data(runtime_movies, input)
+  plot_data <- wrangled_data(plot_movies, input)
 
   # output for movie recommendations
 
@@ -115,12 +118,32 @@ server <- function(input, output) {
     HTML(paste0(img_tags, collapse = ""))
   })
 
+  # output for movie ratings distribution plot
 
-
-  output$boxplot <- renderPlot({
-    req(runtime_data())
+  output$boxplot_rg <- renderPlot({
+    req(plot_data())
     ggplot(
-      runtime_data(),
+      plot_data(),
+      aes(x = IMDB_Rating, y = Genre, fill = Genre)
+    ) +
+      geom_boxplot() +
+      theme(
+        legend.position = "none",
+        plot.title = element_text(size = 20, face = "bold"),
+        axis.title = element_text(size = 15, face = "bold"),
+        axis.text = element_text(size = 12, face = "bold")
+      ) +
+      labs(x = "IMDB Rating", y = "Selected Genres") +
+      ggtitle("Distribution of IMDB Ratings by Genre") +
+      scale_x_continuous(breaks = seq(7.0, 10.0, by = 0.2))
+  })
+  
+  # output for movie runtime distribution plot
+  
+  output$boxplot <- renderPlot({
+    req(plot_data())
+    ggplot(
+      plot_data(),
       aes(x = Runtime, y = Genre, fill = Genre)
     ) +
       geom_boxplot() +
