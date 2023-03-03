@@ -167,7 +167,16 @@ server <- function(input, output) {
       plot_data(),
       aes(y = Genre, fill = Genre)
     ) +
-      geom_bar() 
+      geom_bar() +
+      theme(
+        legend.position = "none",
+        plot.title = element_text(size = 20, face = "bold"),
+        axis.title = element_text(size = 15, face = "bold"),
+        axis.text = element_text(size = 12, face = "bold")
+      ) +
+      labs(x = "Number of movies", y = "Selected Genres") +
+      ggtitle("Number of Movies by Genres") +
+      scale_x_continuous(breaks = seq(40, 321, by = 10))
   })
   
   
