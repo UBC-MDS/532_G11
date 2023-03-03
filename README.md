@@ -8,28 +8,28 @@ Link to the `IMDB_VIZ_R` app: (---To be updated after deployment---)
 
 To read more about our wonderful app, feel free to jump over to one of the sections below or continue scrolling down.
 
--   [Meet the Team](#meet-the-team)
--   [Motivation and Purpose](#motivation-and-purpose)
--   [Dashboard Description](#dashboard-description)
--   [Installation](#installation)
--   [Contributing](#contributing)
--   [App Images](#app-images)
--   [License](#license)
+* [Meet the Team](#meet-the-team)
+* [Motivation and Purpose](#motivation-and-purpose)
+* [Dashboard Description](#dashboard-description)
+* [Installation](#installation)
+* [Contributing](#contributing)
+* [App Images](#app-images)
+* [License](#license)
 
-## Meet the Team {#meet-the-team}
+## Meet the Team
 
 The developers of `IMDB_Viz_R` are students of the MDS program at the University of British Columbia and this app was created as part of the DSCI 532 (Data Visualization II) course.
 
--   [Yukun Zhang](https://github.com/yukunzGIT)
--   [Gaoxiang Wang](https://github.com/louiewang820)
--   [Mike Guron](https://github.com/mikeguron)
--   [Arjun Radhakrishnan](https://github.com/rkrishnan-arjun)
+* [Yukun Zhang](https://github.com/yukunzGIT)
+* [Gaoxiang Wang](https://github.com/louiewang820)
+* [Mike Guron](https://github.com/mikeguron)
+* [Arjun Radhakrishnan](https://github.com/rkrishnan-arjun)
 
-## Motivation and Purpose {#motivation-and-purpose}
+## Motivation and Purpose
 
 Choosing a good movie to watch can be a struggle sometimes and there's almost nothing worse than realizing you just spent 2 hours sitting through a horrible movie that you didn't enjoy one bit. Our user-friendly and accessible dashboard aims to help movie enthusiasts avoid this problem by helping them discover and explore new movies based on their movie watching preferences. In addition, our dashboard uses a vast database of movies to provide users with information on ratings, runtimes, and movie numbers presented through engaging visuals based on various metrics they can select via an interactive and intuitive interface.
 
-## Dashboard Description {#dashboard-description}
+## Dashboard Description
 
 (--- Include a GIF or video of app once complete, or delete this line if not enough time to create it ---)
 
@@ -37,19 +37,19 @@ Our dashboard contains a landing page that recommends 3 movies for users based o
 
 Our dashboard also contains 3 additional tabs each containing a reactive plot to help users visualize their movie preferences based on the same filters applied on the `Top 3 Movie Recommendation page`:
 
--   `Ratings by Genre`: A boxplot that shows the distribution of IMDB ratings by selected genres
--   `Runtimes by Genre`: A boxplot that shows the distribution of runtime by selected genres
--   `Movies by Genre`: A bar chart that shows the number of movies by selected genres
+* `Ratings by Genre`: A boxplot that shows the distribution of IMDB ratings by selected genres
+* `Runtimes by Genre`: A boxplot that shows the distribution of runtime by selected genres
+* `Movies by Genre`: A bar chart that shows the number of movies by selected genres
 
 The boxplots and bar chart are coloured by genres and will update as the user varies their selections via the drop-down lists and sliders on the left-side of the page.
 
 This dashboard is aimed at providing users with an easy-to-use and efficient way to find and select the movies they'll love.
 
-## Installation {#installation}
+## Installation
 
-## Contributing {#contributing}
+## Contributing
 
-## App Images {#app-images}
+## App Images
 
 <img src="images/Recommendations.JPG"/>
 
@@ -57,6 +57,6 @@ This dashboard is aimed at providing users with an easy-to-use and efficient way
 
 <img src="images/Runtime_Plots.JPG"/>
 
-## License {#license}
+## License
 
 `IMDB_Viz_R` was created by Yukun Zhang, Gaoxiang Wang, Mike Guron and Arjun Radhakrishnan. It is licensed under the terms of the MIT license.
