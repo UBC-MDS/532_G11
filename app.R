@@ -10,116 +10,90 @@ movies <- read.csv("data/imdb_top_1000.csv", stringsAsFactors = FALSE) %>%
 runtime_movies <- separate_rows(movies, Genre, sep = ",")
 runtime_movies$Genre <- trimws(runtime_movies$Genre)
 
-# Create side panels to avoid duplication
+# Define side panel
 sidepanels <- sidebarPanel(
   pickerInput("genre", "Genre(s):",
-    choices = sort(unique(str_replace_all(string = unlist(strsplit(movies$Genre, ",")), pattern = " ", repl = ""))),
-    options = list(`actions-box` = TRUE), multiple = T, selected = "Drama"
+              choices = sort(unique(str_replace_all(string = unlist(strsplit(movies$Genre, ",")), pattern = " ", repl = ""))),
+              options = list(`actions-box` = TRUE), multiple = T, selected = "Drama"
   ),
   # Select single star
   pickerInput("star", "Star(s):",
-    choices = sort(unique(unlist(select(movies, Star1:Star4) %>% as.list()))),
-    options = list(`actions-box` = TRUE, `live-search` = TRUE), multiple = T, selected = "Morgan Freeman"
+              choices = sort(unique(unlist(select(movies, Star1:Star4) %>% as.list()))),
+              options = list(`actions-box` = TRUE, `live-search` = TRUE), multiple = T, selected = "Morgan Freeman"
   ),
   # select min movie rating
   sliderInput("minRevenue", "Min Revenue in Million:",
-    min = 0, max = round(max(na.omit(movies$Gross))),
-    value = median(na.omit(movies$Gross)), step = 50, pre = "$", post = "M"
+              min = 0, max = round(max(na.omit(movies$Gross))),
+              value = median(na.omit(movies$Gross)), step = 50, pre = "$", post = "M"
   ),
   # select range of released year
   sliderInput("year", "Released Year Range:",
-    min = suppressWarnings(min(na.omit(parse_number(movies$Released_Year)))),
-    max = suppressWarnings(max(na.omit(parse_number(movies$Released_Year)))),
-    value = c(1920, 2020)
+              min = suppressWarnings(min(na.omit(parse_number(movies$Released_Year)))),
+              max = suppressWarnings(max(na.omit(parse_number(movies$Released_Year)))),
+              value = c(1920, 2020)
   ),
   # Select range of runtime
   sliderInput("runtimes", "Runtimes Range (Minutes):",
-    min = min(movies$Runtime),
-    max = max(movies$Runtime),
-    value = c(70, 200)
+              min = min(movies$Runtime),
+              max = max(movies$Runtime),
+              value = c(70, 200)
   )
 )
 
-# Create side panels to avoid duplication
-sidepanels_rt <- sidebarPanel(
-  pickerInput("genre_rt", "Genre(s):",
-    choices = sort(unique(str_replace_all(string = unlist(strsplit(movies$Genre, ",")), pattern = " ", repl = ""))),
-    options = list(`actions-box` = TRUE), multiple = T, selected = "Drama"
-  ),
-  # Select single star
-  pickerInput("star_rt", "Star(s):",
-    choices = sort(unique(unlist(select(movies, Star1:Star4) %>% as.list()))),
-    options = list(`actions-box` = TRUE, `live-search` = TRUE), multiple = T, selected = "Morgan Freeman"
-  ),
-  # select min movie rating
-  sliderInput("minRevenue_rt", "Min Revenue in Million:",
-    min = 0, max = round(max(na.omit(movies$Gross))),
-    value = median(na.omit(movies$Gross)), step = 50, pre = "$", post = "M"
-  ),
-  # select range of released year
-  sliderInput("year_rt", "Released Year Range:",
-    min = suppressWarnings(min(na.omit(parse_number(movies$Released_Year)))),
-    max = suppressWarnings(max(na.omit(parse_number(movies$Released_Year)))),
-    value = c(1920, 2020)
-  ),
-  # Select range of runtime
-  sliderInput("runtimes_rt", "Runtimes Range (Minutes):",
-    min = min(movies$Runtime),
-    max = max(movies$Runtime),
-    value = c(70, 200)
-  )
-)
-
-# UI function
+# Create navbar page with tabs
 ui <- navbarPage(
   "IMDB_Viz_R", # app name
-
+  
+  # First tab with shared side panel 
   tabPanel(
-    "Top 3 Movie Recommendations", # first navbar page for movie recommendations
+    "IMDB Moive", 
     sidebarLayout(
-      sidepanels, # sidebar panel inside the first navbar page
+      sidepanels,
       mainPanel(
-        htmlOutput("picture")
-      )
-    )
-  ),
-  tabPanel(
-    "Movie Plots", # second navbar page for three plots
-    sidebarLayout(
-      sidepanels_rt,
-      mainPanel(
-        tabsetPanel( # there are three tabs in the main panel
+        tabsetPanel( 
+          tabPanel("Top 3 Movie Recommendations",
+                   htmlOutput("picture")
+                   ),
+          
           tabPanel("Ratings by Genre"),
+          
           tabPanel(
             "Runtimes by Genre",
             plotOutput("boxplot", height = "600px", width = "900px")
           ),
+          
           tabPanel("Movies by Genre")
         )
       )
     )
-  ),
+  )
+  
+
 )
 
 
+
+wrangled_data<-function(df,input){reactive({
+  req(input$minRevenue, input$year, input$runtimes, input$genre, input$star)
+  df %>%
+    filter(.data$Gross >= input$minRevenue) %>% # filter by min gross revenue
+    filter(.data$Released_Year >= input$year[1] & .data$Released_Year <= input$year[2]) %>% # filter by released year range
+    filter(.data$Runtime >= input$runtimes[1] & .data$Runtime <= input$runtimes[2]) %>% # filter by runtimes range
+    filter(str_detect(.data$Genre, paste(input$genre, collapse = "|"))) %>% # filter by genre(s)
+    filter(.data$Star1 %in% input$star | .data$Star2 %in% input$star | .data$Star3 %in% input$star | .data$Star4 %in% input$star) # filter by actor(s)
+})}
 
 
 # Server function
 server <- function(input, output) {
   # use reactive to avoid duplication
-  filtered_data <- reactive({
-    movies %>%
-      filter(.data$Gross >= input$minRevenue) %>% # filter by min gross revenue
-      filter(.data$Released_Year >= input$year[1] & .data$Released_Year <= input$year[2]) %>% # filter by released year range
-      filter(.data$Runtime >= input$runtimes[1] & .data$Runtime <= input$runtimes[2]) %>% # filter by runtimes range
-      filter(str_detect(.data$Genre, paste(input$genre, collapse = "|"))) %>% # filter by genre(s)
-      filter(.data$Star1 %in% input$star | .data$Star2 %in% input$star | .data$Star3 %in% input$star | .data$Star4 %in% input$star) %>% # filter by actor(s)
-      arrange(-.data$IMDB_Rating) # order by moive rating
-  })
+  filtered_data <- wrangled_data(movies,input)
+  runtime_data <- wrangled_data(runtime_movies, input)
 
   # output for movie recommendations
 
   output$picture <- renderUI({
+    req(filtered_data())
     urls <- filtered_data() %>%
       select(Poster_Link) %>%
       head(3) %>%
@@ -141,15 +115,7 @@ server <- function(input, output) {
     HTML(paste0(img_tags, collapse = ""))
   })
 
-  runtime_data <- reactive({
-    req(input$minRevenue_rt, input$year_rt, input$runtimes_rt, input$genre_rt, input$star_rt)
-    runtime_movies %>%
-      filter(.data$Gross >= input$minRevenue_rt) %>% # filter by min gross revenue
-      filter(.data$Released_Year >= input$year_rt[1] & .data$Released_Year <= input$year_rt[2]) %>% # filter by released year range
-      filter(.data$Runtime >= input$runtimes_rt[1] & .data$Runtime <= input$runtimes_rt[2]) %>% # filter by runtimes range
-      filter(str_detect(.data$Genre, paste(input$genre_rt, collapse = "|"))) %>% # filter by genre(s)
-      filter(.data$Star1 %in% input$star_rt | .data$Star2 %in% input$star_rt | .data$Star3 %in% input$star_rt | .data$Star4 %in% input$star_rt)
-  })
+
 
   output$boxplot <- renderPlot({
     req(runtime_data())
