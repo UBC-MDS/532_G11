@@ -46,7 +46,7 @@ ui <- navbarPage(
   
   # First tab with shared side panel 
   tabPanel(
-    "IMDB Moive", 
+    "IMDB Movie", 
     sidebarLayout(
       sidepanels,
       mainPanel(
