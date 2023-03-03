@@ -161,7 +161,14 @@ server <- function(input, output) {
   })
   
   # output for movie number count barplot
-  
+  output$barplot <- renderPlot({
+    req(plot_data())
+    ggplot(
+      plot_data(),
+      aes(y = Genre, fill = Genre)
+    ) +
+      geom_bar() 
+  })
   
   
 }
