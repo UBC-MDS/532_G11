@@ -122,7 +122,7 @@ server <- function(input, output) {
     HTML(paste0(img_tags, collapse = ""))
   })
 
-
+  # output for movie ratings distribution plot
 
   output$boxplot_rg <- renderPlot({
     req(ratings_data())
@@ -142,7 +142,7 @@ server <- function(input, output) {
       scale_x_continuous(breaks = seq(7.0, 10.0, by = 0.2))
   })
   
-  
+  # output for movie runtime distribution plot
   
   output$boxplot <- renderPlot({
     req(runtime_data())
