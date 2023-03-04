@@ -16,7 +16,7 @@ To read more about our wonderful app, feel free to jump over to one of the secti
 -   [App Images](#app-images)
 -   [License](#license)
 
-## Meet the Team {#meet-the-team}
+## Meet the Team 
 
 The developers of `IMDB_Viz_R` are students of the MDS program at the University of British Columbia and this app was created as part of the DSCI 532 (Data Visualization II) course.
 
@@ -25,11 +25,10 @@ The developers of `IMDB_Viz_R` are students of the MDS program at the University
 -   [Mike Guron](https://github.com/mikeguron)
 -   [Arjun Radhakrishnan](https://github.com/rkrishnan-arjun)
 
-## Motivation and Purpose {#motivation-and-purpose}
-
+## Motivation and Purpose 
 Choosing a good movie to watch can be a struggle sometimes and there's almost nothing worse than realizing you just spent 2 hours sitting through a horrible movie that you didn't enjoy one bit. Our user-friendly and accessible dashboard aims to help movie enthusiasts avoid this problem by helping them discover and explore new movies based on their movie watching preferences. In addition, our dashboard uses a vast database of movies to provide users with information on ratings, runtimes, and movie numbers presented through engaging visuals based on various metrics they can select via an interactive and intuitive interface.
 
-## Dashboard Description {#dashboard-description}
+## Dashboard Description 
 
 (--- Include a GIF or video of app once complete, or delete this line if not enough time to create it ---)
 
@@ -45,17 +44,17 @@ The boxplots and bar chart are coloured by genres and will update as the user va
 
 This dashboard is aimed at providing users with an easy-to-use and efficient way to find and select the movies they'll love.
 
-## Installation {#installation}
+## Installation 
 
 To start off, fork the repo from <https://github.com/UBC-MDS/IMDB_Viz_R> and clone the forked repo to your local machine in [RStudio](https://posit.co/download/rstudio-desktop/) by running:
 
 `git clone https://github.com/[Your-GitHub-Page]/IMDB_Viz_R.git`
 
-## Contributing {#contributing}
+## Contributing 
 
 Interested in contributing? Check out the [contributing guidelines](https://github.com/UBC-MDS/IMDB_Viz_R/blob/main/CONTRIBUTING.md). Please note that this project is released with a [Code of Conduct](https://github.com/UBC-MDS/IMDB_Viz_R/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
-## App Images {#app-images}
+## App Images 
 
 <img src="images/Recommendations.JPG"/>
 
