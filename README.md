@@ -4,7 +4,7 @@ Welcome everyone and thank you for visiting the `IMDB_VIZ_R` project repository!
 
 If you love great movies and need some help figuring out which one to watch next, then you've come to the right place as our app is exactly what you need!
 
-Link to the `IMDB_VIZ_R` app: (---To be updated after deployment---)
+[Link to the IMDB_VIZ_R shiny app:](https://ykzhang1211.shinyapps.io/IMDB_Viz_R/)
 
 To read more about our wonderful app, feel free to jump over to one of the sections below or continue scrolling down.
 
@@ -56,6 +56,8 @@ This dashboard is aimed at providing users with an easy-to-use and efficient way
 <img src="images/Ratings_Plot.JPG"/>
 
 <img src="images/Runtime_Plot.JPG"/>
+
+<img src="images/Movie_counts.png"/>
 
 ## License
 

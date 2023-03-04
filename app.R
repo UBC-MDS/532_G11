@@ -65,7 +65,9 @@ ui <- navbarPage(
             plotOutput("boxplot", height = "600px", width = "900px")
           ),
           
-          tabPanel("Movies by Genre")
+          tabPanel(
+            "Movies by Genre",
+            plotOutput("barplot", height = "600px", width = "900px"))
         )
       )
     )
@@ -155,6 +157,25 @@ server <- function(input, output) {
       ) +
       labs(x = "Movie Runtime(mins)", y = "Selected Genres") +
       ggtitle("Distribution of Runtimes by Genre") +
+      scale_x_continuous(breaks = seq(40, 321, by = 10))
+  })
+  
+  # output for movie number count barplot
+  output$barplot <- renderPlot({
+    req(plot_data())
+    ggplot(
+      plot_data(),
+      aes(y = Genre, fill = Genre)
+    ) +
+      geom_bar() +
+      theme(
+        legend.position = "none",
+        plot.title = element_text(size = 20, face = "bold"),
+        axis.title = element_text(size = 15, face = "bold"),
+        axis.text = element_text(size = 12, face = "bold")
+      ) +
+      labs(x = "Number of movies", y = "Selected Genres") +
+      ggtitle("Number of Movies by Genres") +
       scale_x_continuous(breaks = seq(40, 321, by = 10))
   })
 }
