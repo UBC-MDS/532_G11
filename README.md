@@ -57,6 +57,8 @@ This dashboard is aimed at providing users with an easy-to-use and efficient way
 
 <img src="images/Runtime_Plot.JPG"/>
 
+<img src="images/Movie_counts.png"/>
+
 ## License
 
 `IMDB_Viz_R` was created by Yukun Zhang, Gaoxiang Wang, Mike Guron and Arjun Radhakrishnan. It is licensed under the terms of the MIT license.
