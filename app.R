@@ -178,8 +178,6 @@ server <- function(input, output) {
       ggtitle("Number of Movies by Genres") +
       scale_x_continuous(breaks = seq(40, 321, by = 10))
   })
-  
-  
 }
 
 # Run the app
