@@ -21,9 +21,10 @@ sidepanels <- sidebarPanel(
               choices = sort(unique(unlist(select(movies, Star1:Star4) %>% as.list()))),
               options = list(`actions-box` = TRUE, `live-search` = TRUE), multiple = T, selected = "Morgan Freeman"
   ),
-  # select min movie rating
+  # select min movie Revenue
   sliderInput("minRevenue", "Min Revenue in Million:",
-              min = 0, max = round(max(na.omit(movies$Gross))),
+              min = 0,
+              max = round(max(na.omit(movies$Gross))) - (round(max(na.omit(movies$Gross))) %% 100),
               value = median(na.omit(movies$Gross)), step = 50, pre = "$", post = "M"
   ),
   # select range of released year
