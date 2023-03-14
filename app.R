@@ -21,9 +21,10 @@ sidepanels <- sidebarPanel(
               choices = sort(unique(unlist(select(movies, Star1:Star4) %>% as.list()))),
               options = list(`actions-box` = TRUE, `live-search` = TRUE), multiple = T, selected = "Morgan Freeman"
   ),
-  # select min movie rating
+  # select min movie Revenue
   sliderInput("minRevenue", "Min Revenue in Million:",
-              min = 0, max = round(max(na.omit(movies$Gross))),
+              min = 0,
+              max = round(max(na.omit(movies$Gross))) - (round(max(na.omit(movies$Gross))) %% 100),
               value = median(na.omit(movies$Gross)), step = 50, pre = "$", post = "M"
   ),
   # select range of released year
@@ -57,17 +58,17 @@ ui <- navbarPage(
           
           tabPanel(
             "Ratings by Genre",
-            plotOutput("boxplot_rg", height = "600px", width = "900px")
+            plotOutput("boxplot_rg", height = "500px", width = "800px")
           ),
           
           tabPanel(
             "Runtimes by Genre",
-            plotOutput("boxplot", height = "600px", width = "900px")
+            plotOutput("boxplot", height = "500px", width = "800px")
           ),
           
           tabPanel(
             "Movies by Genre",
-            plotOutput("barplot", height = "600px", width = "900px"))
+            plotOutput("barplot", height = "500px", width = "800px"))
         )
       )
     )
@@ -112,12 +113,12 @@ server <- function(input, output) {
       head(3) %>%
       pull() # get top 3 movie overviews
     img_tags <- mapply(function(url, caption, text) {
-      img_tag <- paste0("<img src='", url, "' style='width: 200px; height: auto; display:block; margin:0 auto;'>")
-      title_tag <- paste0("<div style='text-align:center; margin-bottom:5px; word-wrap: break-word; word-break: break-all; font-weight:bold; font-size:16px;'>", caption, "</div>")
-      overview_tag <- paste0("<div style='text-align:center; word-wrap: break-word; word-break: break-all; max-width: 200px; line-height: 1.4; margin-top: 5px;'>", text, "</div>")
-      paste0("<div style='display:inline-block; margin:70px; vertical-align:top;'>", title_tag, img_tag, overview_tag, "</div>")
+      img_tag <- paste0("<img src='", url, "' style='width: 100px; height: auto; display:block; margin:0 auto;'>")
+      title_tag <- paste0("<div style='text-align:center; margin-bottom:5px; word-wrap: break-word; word-break: break-all; font-weight:bold; font-size:12px;'>", caption, "</div>")
+      overview_tag <- paste0("<div style='text-align:center; word-wrap: break-word; word-break: break-all; max-width: 120px; line-height: 1.4; margin-top: 5px; font-size:10px;'>", text, "</div>")
+      paste0("<div class='column'","<div style='display:inline-block; margin:50px; vertical-align:top;'>", title_tag, img_tag, overview_tag, "</div>", "</div>")
     }, urls, titles, overviews, SIMPLIFY = FALSE)
-    HTML(paste0(img_tags, collapse = ""))
+    HTML(paste0("<div class='row'", img_tags, "</div>"))
   })
 
   # output for movie ratings distribution plot
@@ -130,7 +131,6 @@ server <- function(input, output) {
     ) +
       geom_boxplot() +
       theme(
-        legend.position = "none",
         plot.title = element_text(size = 20, face = "bold"),
         axis.title = element_text(size = 15, face = "bold"),
         axis.text = element_text(size = 12, face = "bold")
@@ -150,7 +150,6 @@ server <- function(input, output) {
     ) +
       geom_boxplot() +
       theme(
-        legend.position = "none",
         plot.title = element_text(size = 20, face = "bold"),
         axis.title = element_text(size = 15, face = "bold"),
         axis.text = element_text(size = 12, face = "bold")
@@ -169,14 +168,12 @@ server <- function(input, output) {
     ) +
       geom_bar() +
       theme(
-        legend.position = "none",
         plot.title = element_text(size = 20, face = "bold"),
         axis.title = element_text(size = 15, face = "bold"),
         axis.text = element_text(size = 12, face = "bold")
       ) +
       labs(x = "Number of movies", y = "Selected Genres") +
-      ggtitle("Number of Movies by Genres") +
-      scale_x_continuous(breaks = seq(40, 321, by = 10))
+      ggtitle("Number of Movies by Genres")
   })
 }
 
