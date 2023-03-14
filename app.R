@@ -44,7 +44,6 @@ sidepanels <- sidebarPanel(
 # Create navbar page with tabs
 ui <- navbarPage(
   "IMDB_Viz_R", # app name
-  
   # First tab with shared side panel 
   tabPanel(
     "IMDB Movie", 
@@ -53,7 +52,8 @@ ui <- navbarPage(
       mainPanel(
         tabsetPanel( 
           tabPanel("Top 3 Movie Recommendations",
-                   htmlOutput("picture")
+                   htmlOutput("picture"),
+                   downloadButton("download", "Download .tsv")  # UI for download button
                    ),
           
           tabPanel(
@@ -175,6 +175,15 @@ server <- function(input, output) {
       labs(x = "Number of movies", y = "Selected Genres") +
       ggtitle("Number of Movies by Genres")
   })
+  
+  
+  # output for downloading filtered dataset
+  output$download <- downloadHandler(
+    filename = 'filtered_IMDB.tsv',
+    content = function(file) {
+      vroom::vroom_write(filtered_data(), file)
+    }
+  )
 }
 
 # Run the app
