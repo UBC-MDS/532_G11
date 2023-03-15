@@ -49,6 +49,14 @@ To start off, fork the repo from <https://github.com/UBC-MDS/IMDB_Viz_R> and clo
 
 `git clone https://github.com/[Your-GitHub-Page]/IMDB_Viz_R.git`
 
+Run the following command in your R console to install the required libraries locally:
+
+`install.packages(c('shiny', 'tidyverse', 'ggplot2', 'thematic', 'shinyWidgets', 'dplyr', 'purrr','htmltools'))`
+
+Navigate to the directory and run the following command to run the app locally:
+
+`RScript app.R`
+
 ## Contributing
 
 Interested in contributing? Check out the [contributing guidelines](https://github.com/UBC-MDS/IMDB_Viz_R/blob/main/CONTRIBUTING.md). Please note that this project is released with a [Code of Conduct](https://github.com/UBC-MDS/IMDB_Viz_R/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
