@@ -587,13 +587,23 @@ test_that("{shinytest2} recording: Morgan_movies_rating_by_genre", {
 })
 
 
-test_that("{shinytest2} recording: morgan_download_tsv", {
-  app <- AppDriver$new(name = "morgan_download_tsv", height = 914, width = 1379)
+
+
+test_that("{shinytest2} recording: rating-genre", {
+  app <- AppDriver$new(variant = platform_variant(), name = "rating-genre", height = 969, 
+      width = 1619)
   app$set_inputs(genre_open = TRUE, allow_no_input_binding_ = TRUE)
   app$set_inputs(genre = c("Action", "Adventure", "Animation", "Biography", "Comedy", 
       "Crime", "Drama", "Family", "Fantasy", "Film-Noir", "History", "Horror", "Music", 
       "Musical", "Mystery", "Romance", "Sci-Fi", "Sport", "Thriller", "War", "Western"))
   app$set_inputs(genre_open = FALSE, allow_no_input_binding_ = TRUE)
-  app$expect_download("download")
-  app$expect_values()
+  app$set_inputs(star_open = TRUE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(star = c("Burt Reynolds", "Morgan Freeman"))
+  app$set_inputs(star = c("Burt Reynolds", "Cameron Diaz", "Morgan Freeman"))
+  app$set_inputs(star = c("Burt Reynolds", "Cameron Diaz", "Cary Grant", "Morgan Freeman"))
+  app$set_inputs(star = c("Burt Reynolds", "Cameron Diaz", "Carroll Baker", "Cary Grant", 
+      "Morgan Freeman"))
+  app$set_inputs(star_open = FALSE, allow_no_input_binding_ = TRUE)
+  app$set_inputs(year = c(1920, 2014))
+  app$expect_screenshot()
 })
