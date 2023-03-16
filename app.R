@@ -9,6 +9,7 @@ movies <- read.csv("data/imdb_top_1000.csv", stringsAsFactors = FALSE) %>%
 
 plot_movies <- separate_rows(movies, Genre, sep = ",")
 plot_movies$Genre <- trimws(plot_movies$Genre)
+plot_movies$Series_Title <- trimws(plot_movies$Series_Title)
 
 # Define side panel
 sidepanels <- sidebarPanel(
@@ -57,6 +58,11 @@ ui <- navbarPage(
                    ),
           
           tabPanel(
+            "Top Rated movies by Genre",
+            plotOutput("movie_genre", height = "500px", width = "800px")
+          ),
+          
+          tabPanel(
             "Ratings by Genre",
             plotOutput("boxplot_rg", height = "500px", width = "800px")
           ),
@@ -89,13 +95,23 @@ wrangled_data<-function(df,input){reactive({
     filter(.data$Star1 %in% input$star | .data$Star2 %in% input$star | .data$Star3 %in% input$star | .data$Star4 %in% input$star) # filter by actor(s)
 })}
 
+genre_wrangled_data<-function(df,input){reactive({
+  req(input$genre)
+  df %>%
+    filter(str_detect(.data$Genre, paste(input$genre, collapse = "|")))  %>%
+    distinct( Series_Title, .keep_all = TRUE) %>%
+  arrange(desc(IMDB_Rating)) %>%
+            head(5) 
+  
+})}
+
 
 # Server function
 server <- function(input, output) {
   # use reactive to avoid duplication
   filtered_data <- wrangled_data(movies,input)
   plot_data <- wrangled_data(plot_movies, input)
-
+  genre_data <- genre_wrangled_data(plot_movies, input)
   # output for movie recommendations
 
   output$picture <- renderUI({
@@ -174,6 +190,26 @@ server <- function(input, output) {
       ) +
       labs(x = "Number of movies", y = "Selected Genres") +
       ggtitle("Number of Movies by Genres")
+  })
+  
+  # output for top 5 movies by genre
+  output$movie_genre <- renderPlot({
+    req(genre_data()) 
+    
+    ggplot(genre_data(), aes(x = IMDB_Rating, y = reorder(Series_Title, IMDB_Rating), fill = IMDB_Rating)) +
+      geom_bar(stat = "identity") +
+      geom_text(aes(label = Series_Title), hjust = 1.1, size = 7, face = "bold") +
+      scale_fill_gradient(low = "lightyellow", high = "red") +
+      theme(axis.text.y = element_blank()) +
+      theme(
+        plot.title = element_text(size = 20, face = "bold"),
+        axis.title = element_text(size = 15, face = "bold"),
+        axis.text = element_text(size = 12, face = "bold")
+      ) +
+      guides(fill = FALSE)+
+      coord_cartesian(xlim = c(7, 9.5)) +
+      labs(x = "Rating", y = "") +
+      ggtitle(paste("Top 5 Movies by Rating in the selected Genre"))
   })
   
   
