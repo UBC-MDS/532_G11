@@ -202,7 +202,7 @@ server <- function(input, output) {
     
     ggplot(genre_data(), aes(x = IMDB_Rating, y = reorder(Series_Title, IMDB_Rating), fill = IMDB_Rating)) +
       geom_bar(stat = "identity") +
-      geom_text(aes(label = Series_Title), hjust = 1.1, size = 7, face = "bold") +
+      geom_text(aes(label = Series_Title), hjust = 1.1, size = 7) +
       scale_fill_gradient(low = "lightyellow", high = "red") +
       theme(axis.text.y = element_blank()) +
       theme(
