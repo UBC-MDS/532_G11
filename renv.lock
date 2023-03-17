@@ -1053,18 +1053,6 @@
       ],
       "Hash": "b04c27110bf367b4daa93f34f3d58e75"
     },
-    "packrat": {
-      "Package": "packrat",
-      "Version": "0.9.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "tools",
-        "utils"
-      ],
-      "Hash": "481428983c19a7c443f7ea1beff0a2de"
-    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.8.1",
@@ -1344,24 +1332,6 @@
         "R"
       ],
       "Hash": "1de7ab598047a87bba48434ba35d497d"
-    },
-    "rsconnect": {
-      "Package": "rsconnect",
-      "Version": "0.8.29",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "curl",
-        "digest",
-        "jsonlite",
-        "openssl",
-        "packrat",
-        "rstudioapi",
-        "tools",
-        "yaml"
-      ],
-      "Hash": "fe178fc15af80952f546aafedf655b36"
     },
     "rstudioapi": {
       "Package": "rstudioapi",
