@@ -119,7 +119,7 @@ server <- function(input, output) {
   
   output$note <- renderText({
     req(genre_data()) 
-    paste("Note: This plot only shows the top rated movies for a specific genre and is not based on rest of the filters.")
+    paste("Note: This plot only shows the top-rated movies for a specific genre and is not based on the rest of the filters.")
   })
   
   # output for movie recommendations
