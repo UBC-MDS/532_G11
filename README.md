@@ -1,5 +1,7 @@
 # IMDB_Viz_R
 
+[![shiny-deploy](https://github.com/UBC-MDS/IMDB_Viz_R/actions/workflows/deploy-app.yaml/badge.svg)](https://github.com/UBC-MDS/IMDB_Viz_R/actions/workflows/deploy-app.yaml) [![Test app w/ {renv}](https://github.com/UBC-MDS/IMDB_Viz_R/actions/workflows/testing.yaml/badge.svg)](https://github.com/UBC-MDS/IMDB_Viz_R/actions/workflows/testing.yaml)
+
 Welcome everyone and thank you for visiting the `IMDB_VIZ_R` project repository!
 
 If you love great movies and need some help figuring out which one to watch next, then you've come to the right place as our app is exactly what you need!
