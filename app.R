@@ -2,6 +2,9 @@ library(shiny)
 library(tidyverse)
 library(shinyWidgets)
 library(purrr)
+library(rmarkdown)
+library(here)
+
 # remove stings in Runtime column
 movies <- read.csv("data/imdb_top_1000.csv", stringsAsFactors = FALSE) %>%
   mutate(Runtime = as.numeric(gsub("([0-9]+).*$", "\\1", Runtime))) %>%
@@ -54,8 +57,9 @@ ui <- navbarPage(
         tabsetPanel( 
           tabPanel("Top 3 Movie Recommendations",
                    htmlOutput("picture"),
-                   downloadButton("download", "Download .tsv")  # UI for download button
-                   ),
+                   downloadButton("download", "Download .tsv"),  # UI for download button
+                   downloadButton("report", "Download Report")
+                  ),
           
           tabPanel(
             "Top Rated movies by Genre",
@@ -218,6 +222,28 @@ server <- function(input, output) {
     filename = 'filtered_IMDB.tsv',
     content = function(file) {
       vroom::vroom_write(filtered_data(), file)
+    }
+  )
+
+  # output for downloading the report
+  output$report <- downloadHandler(
+    filename = "IMDB_Viz_R_App_Report.html",
+    content = function(file){
+      
+      tempdirpath <- file.path(tempdir(), "Report.Rmd")
+      file.copy("reports/Report.Rmd", tempdirpath, overwrite = TRUE)
+      
+      params <- list(
+        genre = input$genre,
+        star = input$star,
+        minRevenue = input$minRevenue,
+        year = input$year,
+        runtimes = input$runtimes)
+      
+      rmarkdown::render(tempdirpath,
+                        output_file = file,
+                        params = params,
+                        envir = new.env(parent = globalenv()))
     }
   )
 }
