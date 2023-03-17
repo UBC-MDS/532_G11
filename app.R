@@ -59,12 +59,16 @@ ui <- navbarPage(
           
           tabPanel(
             "Top Rated movies by Genre",
-            plotOutput("movie_genre", height = "500px", width = "800px")
+            plotOutput("movie_genre", height = "500px", width = "800px"),
+            br(),
+            
+            tags$h2( style = "font-size: 15px; font-weight: bold;",textOutput("note"))
+            
           ),
           
           tabPanel(
             "Ratings by Genre",
-            plotOutput("boxplot_rg", height = "500px", width = "800px")
+            plotOutput("boxplot_rg", height = "500px", width = "800px"),
           ),
           
           tabPanel(
@@ -112,6 +116,12 @@ server <- function(input, output) {
   filtered_data <- wrangled_data(movies,input)
   plot_data <- wrangled_data(plot_movies, input)
   genre_data <- genre_wrangled_data(plot_movies, input)
+  
+  output$note <- renderText({
+    req(genre_data()) 
+    paste("Note: This plot only shows the top rated movies for a specific genre and is not based on rest of the filters.")
+  })
+  
   # output for movie recommendations
 
   output$picture <- renderUI({
