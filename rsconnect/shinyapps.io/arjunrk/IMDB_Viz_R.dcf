@@ -1,0 +1,13 @@
+name: IMDB_Viz_R
+title: IMDB_Viz_R
+username:
+account: arjunrk
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8578105
+bundleId: 6970365
+url: https://arjunrk.shinyapps.io/IMDB_Viz_R/
+when: 1679044540.00953
+lastSyncTime: 1679044540.00955
+asMultiple: FALSE
+asStatic: FALSE
