@@ -68,7 +68,7 @@ ui <- navbarPage(
           
           tabPanel(
             "Ratings by Genre",
-            plotOutput("boxplot_rg", height = "500px", width = "800px"),
+            plotOutput("boxplot_rg", height = "500px", width = "800px")
           ),
           
           tabPanel(
