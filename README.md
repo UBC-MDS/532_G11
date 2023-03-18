@@ -35,13 +35,14 @@ Choosing a good movie to watch can be a struggle sometimes and there's almost no
 
 Our dashboard contains a landing page that recommends 3 movies for users based on their preferences. Users can use drop-down lists on the left-side of the page to select multiple genres, and actors of interest, as well as sliders to indicate the minimum Gross Revenue, release year range, and runtime range they prefer. The thumbnail, title, and a short summary are shown for each of the 3 movies in the main panel of the page.
 
-Our dashboard also contains 3 additional tabs each containing a reactive plot to help users visualize their movie preferences based on the same filters applied on the `Top 3 Movie Recommendation page`:
+Our dashboard also contains 4 additional tabs each containing a reactive plot to help users visualize their movie preferences based on the same filters applied on the `Top 3 Movie Recommendation page`:
 
+- `Top Rated movies by Genre`: A bar chart that lists the top 5 highest rated movies for the primary selected genre
 - `Ratings by Genre`: A boxplot that shows the distribution of IMDB ratings by selected genres
 - `Runtimes by Genre`: A boxplot that shows the distribution of runtime by selected genres
 - `Movies by Genre`: A bar chart that shows the number of movies by selected genres
 
-The boxplots and bar chart are coloured by genres and will update as the user varies their selections via the drop-down lists and sliders on the left-side of the page.
+The boxplots and `Movies by Genre` bar chart are coloured by genres and will update as the user varies their selections via the drop-down lists and sliders on the left-side of the page.  
 
 This dashboard is aimed at providing users with an easy-to-use and efficient way to find and select the movies they'll love.
 
@@ -66,6 +67,8 @@ Interested in contributing? Check out the [contributing guidelines](https://gith
 ## App Images
 
 <img src="images/Recommendations.JPG"/>
+
+<img src="images/Top_5_Movies.JPG"/>
 
 <img src="images/Ratings_Plot.JPG"/>
 
