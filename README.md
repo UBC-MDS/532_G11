@@ -35,13 +35,16 @@ Choosing a good movie to watch can be a struggle sometimes and there's almost no
 
 Our dashboard contains a landing page that recommends 3 movies for users based on their preferences. Users can use drop-down lists on the left-side of the page to select multiple genres, and actors of interest, as well as sliders to indicate the minimum Gross Revenue, release year range, and runtime range they prefer. The thumbnail, title, and a short summary are shown for each of the 3 movies in the main panel of the page.
 
-Our dashboard also contains 3 additional tabs each containing a reactive plot to help users visualize their movie preferences based on the same filters applied on the `Top 3 Movie Recommendation page`:
+Our dashboard also contains 4 additional tabs each containing a reactive plot to help users visualize their movie preferences based on the same filters applied on the `Top 3 Movie Recommendations` page:
 
+- `Top Rated movies by Genre`: A bar chart that directly lists out the top 5 highest rated movies for the primary selected genre
 - `Ratings by Genre`: A boxplot that shows the distribution of IMDB ratings by selected genres
 - `Runtimes by Genre`: A boxplot that shows the distribution of runtime by selected genres
 - `Movies by Genre`: A bar chart that shows the number of movies by selected genres
 
-The boxplots and bar chart are coloured by genres and will update as the user varies their selections via the drop-down lists and sliders on the left-side of the page.
+The distributions in the boxplots depict the 25th, 50th, and 75th percentiles for each of the selected genres and any outliers that are above or below 1.5 times the interquartile range are marked as individual points. Both the boxplots and the `Movies by Genre` bar chart are coloured by genres and will update as the user varies their selections via the drop-down lists and sliders on the left-side of the page. 
+
+Furthermore, you can now download a report containing all the plots by simply clicking the `Download Report` button on the `Top 3 Movie Recommendations` landing page and if you're interested in exploring the filtered data itself then you can download it as well by simply clicking the `Download .tsv` button.
 
 This dashboard is aimed at providing users with an easy-to-use and efficient way to find and select the movies they'll love.
 
@@ -49,11 +52,11 @@ This dashboard is aimed at providing users with an easy-to-use and efficient way
 
 To start off, fork the repo from <https://github.com/UBC-MDS/IMDB_Viz_R> and clone the forked repo to your local machine in [RStudio](https://posit.co/download/rstudio-desktop/) by running:
 
-`git clone https://github.com/[Your-GitHub-Page]/IMDB_Viz_R.git`
+`git clone https://github.com/UBC-MDS/IMDB_Viz_R.git`
 
 Run the following command in your R console to install the required libraries locally:
 
-`install.packages(c('shiny', 'tidyverse', 'ggplot2', 'thematic', 'shinyWidgets', 'dplyr', 'purrr','htmltools'))`
+`install.packages(c('shiny', 'tidyverse', 'ggplot2', 'thematic', 'shinyWidgets', 'dplyr', 'purrr', 'htmltools'))`
 
 Navigate to the directory and run the following command to run the app locally:
 
@@ -67,11 +70,13 @@ Interested in contributing? Check out the [contributing guidelines](https://gith
 
 <img src="images/Recommendations.JPG"/>
 
+<img src="images/Top_5_Movies.JPG"/>
+
 <img src="images/Ratings_Plot.JPG"/>
 
 <img src="images/Runtime_Plot.JPG"/>
 
-<img src="images/Movie_counts.png"/>
+<img src="images/Movie_counts.JPG"/>
 
 ## License
 
