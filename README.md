@@ -49,11 +49,11 @@ This dashboard is aimed at providing users with an easy-to-use and efficient way
 
 To start off, fork the repo from <https://github.com/UBC-MDS/IMDB_Viz_R> and clone the forked repo to your local machine in [RStudio](https://posit.co/download/rstudio-desktop/) by running:
 
-`git clone https://github.com/[Your-GitHub-Page]/IMDB_Viz_R.git`
+`git clone https://github.com/UBC-MDS/IMDB_Viz_R.git`
 
 Run the following command in your R console to install the required libraries locally:
 
-`install.packages(c('shiny', 'tidyverse', 'ggplot2', 'thematic', 'shinyWidgets', 'dplyr', 'purrr','htmltools'))`
+`install.packages(c('shiny', 'tidyverse', 'ggplot2', 'thematic', 'shinyWidgets', 'dplyr', 'purrr', 'htmltools'))`
 
 Navigate to the directory and run the following command to run the app locally:
 
