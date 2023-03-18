@@ -37,12 +37,12 @@ Our dashboard contains a landing page that recommends 3 movies for users based o
 
 Our dashboard also contains 4 additional tabs each containing a reactive plot to help users visualize their movie preferences based on the same filters applied on the `Top 3 Movie Recommendation page`:
 
-- `Top Rated movies by Genre`: A bar chart that lists the top 5 highest rated movies for the primary selected genre
+- `Top Rated movies by Genre`: A bar chart that directly lists out the top 5 highest rated movies for the primary selected genre
 - `Ratings by Genre`: A boxplot that shows the distribution of IMDB ratings by selected genres
 - `Runtimes by Genre`: A boxplot that shows the distribution of runtime by selected genres
 - `Movies by Genre`: A bar chart that shows the number of movies by selected genres
 
-The boxplots and `Movies by Genre` bar chart are coloured by genres and will update as the user varies their selections via the drop-down lists and sliders on the left-side of the page.  
+The distributions in the boxplots depict the 25th, 50th, and 75th percentiles for each of the selected genres and any outliers that are above or below 1.5 times the interquartile range are marked as points. Both the boxplots and the `Movies by Genre` bar chart are coloured by genres and will update as the user varies their selections via the drop-down lists and sliders on the left-side of the page. 
 
 This dashboard is aimed at providing users with an easy-to-use and efficient way to find and select the movies they'll love.
 
