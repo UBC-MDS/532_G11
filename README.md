@@ -76,7 +76,7 @@ Interested in contributing? Check out the [contributing guidelines](https://gith
 
 <img src="images/Runtime_Plot.JPG"/>
 
-<img src="images/Movie_counts.png"/>
+<img src="images/Movie_counts.JPG"/>
 
 ## License
 
