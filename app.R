@@ -4,6 +4,7 @@ library(shinyWidgets)
 library(purrr)
 library(rmarkdown)
 library(here)
+library(shinycssloaders)
 
 # remove stings in Runtime column
 movies <- read.csv("data/imdb_top_1000.csv", stringsAsFactors = FALSE) %>%
@@ -56,14 +57,18 @@ ui <- navbarPage(
       mainPanel(
         tabsetPanel( 
           tabPanel("Top 3 Movie Recommendations",
-                   htmlOutput("picture"),
+                   shinycssloaders::withSpinner(
+                     htmlOutput("picture")
+                   ),
                    downloadButton("download", "Download .tsv"),  # UI for download button
                    downloadButton("report", "Download Report")
                   ),
           
           tabPanel(
             "Top Rated movies by Genre",
-            plotOutput("movie_genre", height = "500px", width = "800px"),
+            shinycssloaders::withSpinner(
+              plotOutput("movie_genre", height = "500px", width = "800px")
+            ),
             br(),
             
             tags$h2( style = "font-size: 15px; font-weight: bold;",textOutput("note"))
@@ -72,17 +77,25 @@ ui <- navbarPage(
           
           tabPanel(
             "Ratings by Genre",
-            plotOutput("boxplot_rg", height = "500px", width = "800px")
+            shinycssloaders::withSpinner(
+              plotOutput("boxplot_rg", height = "500px", width = "800px")
+            )
           ),
           
           tabPanel(
             "Runtimes by Genre",
-            plotOutput("boxplot", height = "500px", width = "800px")
+            shinycssloaders::withSpinner(
+              plotOutput("boxplot", height = "500px", width = "800px")
+            )
+            
           ),
           
           tabPanel(
             "Movies by Genre",
-            plotOutput("barplot", height = "500px", width = "800px"))
+            shinycssloaders::withSpinner(
+              plotOutput("barplot", height = "500px", width = "800px")
+            )
+            )
         )
       )
     )
