@@ -53,7 +53,7 @@ To start off, fork the repo from <https://github.com/UBC-MDS/IMDB_Viz_R> and clo
 
 Run the following command in your R console to install the required libraries locally:
 
-`install.packages(c('shiny', 'tidyverse', 'ggplot2', 'thematic', 'shinyWidgets', 'dplyr', 'purrr','htmltools'))`
+`install.packages(c('shiny', 'tidyverse', 'ggplot2', 'thematic', 'shinyWidgets', 'dplyr', 'purrr','htmltools', 'rmarkdown', 'here', 'shinycssloaders', 'shinytest2'))`
 
 Navigate to the directory and run the following command to run the app locally:
 
